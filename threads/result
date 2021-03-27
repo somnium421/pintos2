@@ -1,0 +1,830 @@
+cd build && make grade
+make[1]: Entering directory '/home/kaist/pintos-kaist/threads/build'
+../../tests/make-grade ../.. results ../../tests/threads/Grading | tee grade
+TOTAL TESTING SCORE: 0.0%
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+SUMMARY BY TEST SET
+
+Test Set                                      Pts Max  % Ttl  % Max
+--------------------------------------------- --- --- ------ ------
+tests/threads/Rubric.alarm                      0/  7   0.0%/ 20.0%
+tests/threads/Rubric.priority                   0/ 25   0.0%/ 50.0%
+tests/threads/mlfqs/Rubric                      0/  9   0.0%/ 30.0%
+--------------------------------------------- --- --- ------ ------
+Total                                                   0.0%/100.0%
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+SUMMARY OF INDIVIDUAL TESTS
+
+Functionality and robustness of alarm clock (tests/threads/Rubric.alarm):
+	  ** 0/ 1 tests/threads/alarm-single
+	  ** 0/ 1 tests/threads/alarm-multiple
+	  ** 0/ 1 tests/threads/alarm-simultaneous
+	  ** 0/ 2 tests/threads/alarm-priority
+
+	  ** 0/ 1 tests/threads/alarm-zero
+	  ** 0/ 1 tests/threads/alarm-negative
+
+	- Section summary.
+	      0/  6 tests passed
+	      0/  7 points subtotal
+
+Functionality of priority scheduler (tests/threads/Rubric.priority):
+	  ** 0/ 1 tests/threads/priority-change
+	  ** 0/ 1 tests/threads/priority-preempt
+
+	  ** 0/ 1 tests/threads/priority-fifo
+	  ** 0/ 2 tests/threads/priority-sema
+	  ** 0/ 2 tests/threads/priority-condvar
+
+	  ** 0/ 2 tests/threads/priority-donate-one
+	  ** 0/ 3 tests/threads/priority-donate-multiple
+	  ** 0/ 3 tests/threads/priority-donate-multiple2
+	  ** 0/ 3 tests/threads/priority-donate-nest
+	  ** 0/ 3 tests/threads/priority-donate-chain
+	  ** 0/ 2 tests/threads/priority-donate-sema
+	  ** 0/ 2 tests/threads/priority-donate-lower
+
+	- Section summary.
+	      0/ 12 tests passed
+	      0/ 25 points subtotal
+
+Functionality of advanced scheduler (tests/threads/mlfqs/Rubric):
+	  ** 0/ 1 tests/threads/mlfqs/mlfqs-load-1
+	  ** 0/ 1 tests/threads/mlfqs/mlfqs-load-60
+	  ** 0/ 1 tests/threads/mlfqs/mlfqs-load-avg
+
+	  ** 0/ 1 tests/threads/mlfqs/mlfqs-recent-1
+
+	  ** 0/ 1 tests/threads/mlfqs/mlfqs-fair-2
+	  ** 0/ 1 tests/threads/mlfqs/mlfqs-fair-20
+
+	  ** 0/ 1 tests/threads/mlfqs/mlfqs-nice-2
+	  ** 0/ 1 tests/threads/mlfqs/mlfqs-nice-10
+
+	  ** 0/ 1 tests/threads/mlfqs/mlfqs-block
+
+	- Section summary.
+	      0/  9 tests passed
+	      0/  9 points subtotal
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/alarm-single FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/alarm-single:
+
+Kernel command line: -q run alarm-single
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 453 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/alarm-multiple FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/alarm-multiple:
+
+Kernel command line: -q run alarm-multiple
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 455 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/alarm-simultaneous FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/alarm-simultaneous:
+
+Kernel command line: -q run alarm-simultaneous
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 459 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/alarm-priority FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/alarm-priority:
+
+Kernel command line: -q run alarm-priority
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 455 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/alarm-zero FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/alarm-zero:
+
+Kernel command line: -q run alarm-zero
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 451 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/alarm-negative FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/alarm-negative:
+
+Kernel command line: -q run alarm-negative
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 455 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-change FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-change:
+
+Kernel command line: -q run priority-change
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 456 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-preempt FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-preempt:
+
+Kernel command line: -q run priority-preempt
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 457 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-fifo FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-fifo:
+
+Kernel command line: -q run priority-fifo
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 454 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-sema FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-sema:
+
+Kernel command line: -q run priority-sema
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 454 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-condvar FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-condvar:
+
+Kernel command line: -q run priority-condvar
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 457 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-donate-one FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-donate-one:
+
+Kernel command line: -q run priority-donate-one
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 460 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-donate-multiple FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-donate-multiple:
+
+Kernel command line: -q run priority-donate-multiple
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 465 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-donate-multiple2 FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-donate-multiple2:
+
+Kernel command line: -q run priority-donate-multiple2
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 466 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-donate-nest FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-donate-nest:
+
+Kernel command line: -q run priority-donate-nest
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 461 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-donate-chain FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-donate-chain:
+
+Kernel command line: -q run priority-donate-chain
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 462 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-donate-sema FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-donate-sema:
+
+Kernel command line: -q run priority-donate-sema
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 461 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/priority-donate-lower FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/priority-donate-lower:
+
+Kernel command line: -q run priority-donate-lower
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 462 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs/mlfqs-load-1 FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/mlfqs/mlfqs-load-1:
+
+Kernel command line: -q -mlfqs run mlfqs-load-1
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 460 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs/mlfqs-load-60 FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/mlfqs/mlfqs-load-60:
+
+Kernel command line: -q -mlfqs run mlfqs-load-60
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 461 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs/mlfqs-load-avg FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/mlfqs/mlfqs-load-avg:
+
+Kernel command line: -q -mlfqs run mlfqs-load-avg
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 462 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs/mlfqs-recent-1 FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/mlfqs/mlfqs-recent-1:
+
+Kernel command line: -q -mlfqs run mlfqs-recent-1
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 462 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs/mlfqs-fair-2 FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/mlfqs/mlfqs-fair-2:
+
+Kernel command line: -q -mlfqs run mlfqs-fair-2
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 460 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs/mlfqs-fair-20 FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/mlfqs/mlfqs-fair-20:
+
+Kernel command line: -q -mlfqs run mlfqs-fair-20
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 461 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs/mlfqs-nice-2 FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/mlfqs/mlfqs-nice-2:
+
+Kernel command line: -q -mlfqs run mlfqs-nice-2
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 460 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs/mlfqs-nice-10 FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/mlfqs/mlfqs-nice-10:
+
+Kernel command line: -q -mlfqs run mlfqs-nice-10
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 461 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs/mlfqs-block FAILURE:
+
+Kernel panic in run: PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068
+Translation of call stack:
+0x00000080042136ad: debug_panic (lib/kernel/debug.c:32)
+0x0000008004213f03: list_remove (lib/kernel/list.c:243)
+0x0000008004209ec7: lock_acquire (threads/synch.c:206)
+0x0000008004207919: allocate_tid (threads/thread.c:602)
+0x0000008004206978: thread_init (threads/thread.c:119)
+0x0000008004206068: main (threads/init.c:83)
+
+OUTPUT FROM tests/threads/mlfqs/mlfqs-block:
+
+Kernel command line: -q -mlfqs run mlfqs-block
+Kernel PANIC at ../../lib/kernel/list.c:242 in list_remove(): assertion `is_interior (elem)' failed.
+Call stack: 0x80042136ad 0x8004213f03 0x8004209ec7 0x8004207919 0x8004206978 0x8004206068.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 0 ticks
+Thread: 0 idle ticks, 0 kernel ticks, 0 user ticks
+Console: 459 characters output
+Keyboard: 0 keys pressed
+Powering off...
+make[1]: Leaving directory '/home/kaist/pintos-kaist/threads/build'
